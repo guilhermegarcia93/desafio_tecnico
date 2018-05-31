@@ -25,7 +25,6 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
-import org.json.simple.JSONObject;
 
 
 
@@ -39,7 +38,7 @@ public class ProductController {
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public String test(String json_param, 
+    public String postJSONOrganizing(String json_param, 
             @QueryParam("filter") String filter, 
             @QueryParam("order_by") String order_by) throws IOException{
         
