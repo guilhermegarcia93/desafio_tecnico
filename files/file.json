@@ -1,0 +1,48 @@
+[{
+	"id": "123",
+	"ean": "7898100848355",
+	"title": "Cruzador espacial Nikana - 3000m - sem garantia",
+	"brand": "nikana",
+	"price": 820900.90,
+	"stock": 1
+},
+{
+	"id": "u7042",
+	"ean": "7898054800492",
+	"title": "Espada de fótons Nikana Azul",
+	"brand": "nikana",
+	"price": 2199.90,
+	"stock": 82
+},
+{
+	"id": "bb2r3s0",
+	"ean": "2059251400402",
+	"title": "Corredor POD 3000hp Nikana",
+	"brand": "nikana",
+	"price": 17832.90,
+	"stock": 8
+},
+{
+	"id": "321",
+	"ean": "7898100848355",
+	"title": "Cruzador espacial Nikana - 3000m - sem garantia",
+	"brand": "trek",
+	"price": 790300.90,
+	"stock": 0
+},
+{
+	"id": "80092",
+	"ean": "",
+	"title": "Espada de Fótons REDAV Azul",
+	"brand": "redav",
+	"price": 1799.90,
+	"stock": 0
+},
+{
+	"id": "7728uu",
+	"ean": "7898100848355",
+	"title": "Cruzador espacial Ekul - 3000m - sem garantia",
+	"brand": "ekul",
+	"price": 1300000.00,
+	"stock": 1
+}]
