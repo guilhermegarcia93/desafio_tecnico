@@ -1,6 +1,3 @@
-# desafio_tecnico
-Desafio técnico proposto pela LuizaLabs.
-
 # Executando o projeto
 O JAR Executável da aplicação fica dentro do diretório <code>target/</code> com o nome <code>ApiRest-1.0.jar</code>.
 
