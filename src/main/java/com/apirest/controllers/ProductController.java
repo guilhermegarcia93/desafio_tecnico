@@ -124,7 +124,12 @@ public class ProductController {
         objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
         
         TypeReference<List<Product>> mapType = new TypeReference<List<Product>>() {};
-    	List<Product> productList = objectMapper.readValue(json_param, mapType);
+        List<Product> productList = null;
+        try{
+            productList = objectMapper.readValue(json_param, mapType);
+        }catch(Exception e){
+            return functions.formatReturnJSON("006", "Falha na estrutura do JSON. Favor verificar!", null, null);
+        }
         
         /**
         * Funções que recebem a Lista de Produtos, filtros, grupos e ordenações

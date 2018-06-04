@@ -24,7 +24,7 @@ public class Tests {
     JSONArray jsonArray;
     JSONParser parser = new JSONParser();
     
-    String uriBase = "http://localhost:8080/ApiRest/rest/products/";
+    String uriBase = "http://localhost:8080/api/products/";
     
     public Tests() throws FileNotFoundException, IOException, ParseException {
         jsonArray = (JSONArray) parser.parse(new FileReader("files/file.json"));

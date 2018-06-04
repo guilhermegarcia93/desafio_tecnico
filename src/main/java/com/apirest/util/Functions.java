@@ -30,8 +30,12 @@ public class Functions {
         JSONObject retorno = new JSONObject();
         retorno.put("code", code);
         retorno.put("message", message);
-        retorno.put("expected_values", expected_values);
-        retorno.put("value", value);
+        if(expected_values != null){
+            retorno.put("expected_values", expected_values);
+        }
+        if(value != null){
+            retorno.put("value", value);
+        }
         
         return retorno.toJSONString();
     }

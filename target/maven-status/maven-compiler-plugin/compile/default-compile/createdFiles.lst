@@ -1,0 +1,6 @@
+com\apirest\Main.class
+com\apirest\controllers\ProductController$1.class
+com\apirest\controllers\ProductController.class
+com\apirest\Launcher.class
+com\apirest\models\Product.class
+com\apirest\util\Functions.class

@@ -10,6 +10,7 @@
     <name>ApiRest</name>
 
     <properties>
+        <tomcat.version>8.0.48</tomcat.version>
         <!--<endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>-->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -20,30 +21,26 @@
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>3.0.2</version>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>2.4.3</version>
                 <configuration>
-                    <archive>
-                        <manifest>
-                            <mainClass>com.apirest.Main</mainClass>
-                        </manifest>
-                    </archive>
+                    <finalName>apirest-${project.version}</finalName>
                 </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>1.2.1</version>
                 <executions>
                     <execution>
+                        <phase>package</phase>
                         <goals>
-                            <goal>java</goal>
+                            <goal>shade</goal>
                         </goals>
+                        <configuration>
+                            <transformers>
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    <mainClass>com.apirest.Launcher</mainClass>
+                                </transformer>
+                            </transformers>
+                        </configuration>
                     </execution>
                 </executions>
-                <configuration>
-                    <mainClass>com.apirest.Main</mainClass>
-                </configuration>
             </plugin>
         </plugins>
     </build>
@@ -97,6 +94,21 @@
             <groupId>io.rest-assured</groupId>
             <artifactId>json-path</artifactId>
             <version>3.1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-core</artifactId>
+            <version>${tomcat.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-jasper</artifactId>
+            <version>${tomcat.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-logging-juli</artifactId>
+            <version>${tomcat.version}</version>
         </dependency>
     </dependencies>
 </project>

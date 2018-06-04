@@ -12,13 +12,8 @@ import org.glassfish.jersey.server.ResourceConfig;
  *
  * @author Guilherme
  */
-@ApplicationPath("rest")
 public class Main extends ResourceConfig{
     
-    public static void main(String[] args){    
-    }
-    
-    //Guilherme - 31/05/2018
     //Dizendo para o Jersey que as classes Controller estão no pacote abaixo.
     public Main(){
         packages("com.apirest.controllers");
