@@ -55,11 +55,13 @@ public class ProductController {
          */
         MultivaluedMap<String, String> queryParams = uriInfo.getQueryParameters();
         if(queryParams.size() > 0){
-            String queryParam = queryParams.keySet().stream().findFirst().get();
+            List<String> _queryParams = queryParams.keySet().stream().collect(Collectors.toList());
 
-            List valid_params = Arrays.asList("FILTER","ORDER_BY","GROUP_BY");
-            if (!valid_params.contains(queryParam.toUpperCase())) {
-                return functions.formatReturnJSON("001", "Parametro(s) inválido(s).", valid_params, queryParam);
+            for(String queryParam : _queryParams){
+                List valid_params = Arrays.asList("FILTER","ORDER_BY","GROUP_BY");
+                if (!valid_params.contains(queryParam.toUpperCase())) {
+                    return functions.formatReturnJSON("001", "Parametro(s) inválido(s).", valid_params, queryParam);
+                }
             }
         }
                 
@@ -67,20 +69,23 @@ public class ProductController {
          * VALIDANDO PARAMETRO ORDER_BY @QUERYPARAM.
          */
         if(order_by != null){
-            String ordenationKey = Arrays.stream(order_by.split(",")).map(String::trim)
-                                    .flatMap(s -> Arrays.stream(s.split(":")).limit(1)).findFirst().get();
-            String ordenationValues = Arrays.stream(order_by.split(",")).map(String::trim)
-                                    .flatMap(s -> Arrays.stream(s.split(":")).skip(1)).findFirst().get();
+            List<String> _ordenationKeys = Arrays.stream(order_by.split(",")).map(String::trim)
+                                    .flatMap(s -> Arrays.stream(s.split(":")).limit(1)).collect(Collectors.toList());
+            List<String> _ordenationValues = Arrays.stream(order_by.split(",")).map(String::trim)
+                                    .flatMap(s -> Arrays.stream(s.split(":")).skip(1)).collect(Collectors.toList());
             
-            List valid_ordenationKeys = Arrays.asList("ID","EAN","TITLE","BRAND","PRICE","STOCK");
-            if(!valid_ordenationKeys.contains(ordenationKey.toUpperCase())){
-                return functions.formatReturnJSON("002", "Parametro(s) de ordenação inválidos.", valid_ordenationKeys, ordenationKey);
+            for(String ordenationKey : _ordenationKeys){
+                List valid_ordenationKeys = Arrays.asList("ID","EAN","TITLE","BRAND","PRICE","STOCK");
+                if(!valid_ordenationKeys.contains(ordenationKey.toUpperCase())){
+                    return functions.formatReturnJSON("002", "Parametro(s) de ordenação inválidos.", valid_ordenationKeys, ordenationKey);
+                }
             }
-            List valid_ordenationValues = Arrays.asList("ASC","DESC");
-            if(!valid_ordenationValues.contains(ordenationValues.toUpperCase())){
-                return functions.formatReturnJSON("003", "Parametro(s) de ordenação inválidos.", valid_ordenationValues, ordenationValues);
+            for(String ordenationValue : _ordenationValues){
+                List valid_ordenationValues = Arrays.asList("ASC","DESC");
+                if(!valid_ordenationValues.contains(ordenationValue.toUpperCase())){
+                    return functions.formatReturnJSON("003", "Parametro(s) de ordenação inválidos.", valid_ordenationValues, ordenationValue);
+                }
             }
-            
         }else{
             /**
              * valor default caso o user não passar nada.
@@ -92,13 +97,15 @@ public class ProductController {
          * VALIDANDO PARAMETRO FILTER @QUERYPARAM.
          */
         if(filter != null){
-            String filterKey = Arrays.stream(filter.split(",")).map(String::trim)
-                                    .flatMap(s -> Arrays.stream(s.split(":")).limit(1)).findFirst().get();
+            List<String> _filterKey = Arrays.stream(filter.split(",")).map(String::trim)
+                                    .flatMap(s -> Arrays.stream(s.split(":")).limit(1)).collect(Collectors.toList());
             
-            List valid_filtersKeys = Arrays.asList("ID","EAN","TITLE","BRAND","PRICE","STOCK");
-            if(!valid_filtersKeys.contains(filterKey.toUpperCase())){
-                return functions.formatReturnJSON("004", "Parametro(s) de ordenação inválidos.", valid_filtersKeys, filterKey);
-            }            
+            for(String filterKey : _filterKey){
+                List valid_filtersKeys = Arrays.asList("ID","EAN","TITLE","BRAND","PRICE","STOCK");
+                if(!valid_filtersKeys.contains(filterKey.toUpperCase())){
+                    return functions.formatReturnJSON("004", "Parametro(s) de ordenação inválidos.", valid_filtersKeys, filterKey);
+                }      
+            }
         }
         
         /**
