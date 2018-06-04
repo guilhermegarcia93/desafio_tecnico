@@ -1,5 +1,5 @@
 # Executando o projeto
-O JAR Executável da aplicação fica dentro do diretório <code>target/</code> com o nome <code>ApiRest-1.0.jar</code>.
+O JAR Executável da aplicação fica dentro do diretório <code>target/</code> com o nome <code>apirest-1.0.jar</code>.
 
 Os comandos para execução do projeto, desde a compilação, são os seguintes:
   - acessar a pasta onde está o arquivo <code>pom.xml</code>, execute: <code>mvn clean compile</code>
